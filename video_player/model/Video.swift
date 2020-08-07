@@ -11,11 +11,15 @@ import ObjectMapper
 
 class Video: Mappable {
     var id: String?
+
+    init(id: String) {
+        self.id = id
+    }
     
     required init?(map: Map) {
         
     }
-    
+
     func mapping(map: Map) {
         
     }

@@ -12,6 +12,8 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         if #available(iOS 13, *) {
             let appearance = UITabBarAppearance()
             appearance.stackedLayoutAppearance.selected.iconColor = UIColor(red: 1.0, green: 0.341, blue: 0.133, alpha: 1.0)
