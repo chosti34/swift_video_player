@@ -10,11 +10,15 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        UITabBar.appearance().tintColor = UIColor(red: 1.0, green: 0.341, blue: 0.133, alpha: 1.0)
+        UITabBar.appearance().unselectedItemTintColor = UIColor(red: 0.886, green: 0.662, blue: 0.592, alpha: 1.0)
+
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 0.65, green: 0.454, blue: 0.392, alpha: 1.0)], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 0.67, green: 0.627, blue: 0.611, alpha: 1.0)], for: .normal)
+        
         return true
     }
 
