@@ -14,6 +14,7 @@ class VideoLibraryViewController: UIViewController {
     let url = "https://github.com/Tandyru/ispring-ios-test/raw/master/data.json"
 
     var videos: [Video] = []
+    var favorites: Dictionary<String, Bool> = [:]
 
     @IBOutlet var tableView: UITableView!
 
@@ -24,16 +25,17 @@ class VideoLibraryViewController: UIViewController {
         tableView.dataSource = self
         navigationItem.title = "Библиотека"
         
+        let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        scene?.windows.first?.backgroundColor = .white
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        
         api.sendRequest(url: url, responseHandler: { (response: Any?) in
             print(response)
             self.videos.append(Video(id: "123"))
             self.tableView.reloadData()
         })
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
     }
 }
 
@@ -44,7 +46,14 @@ extension VideoLibraryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell", for: indexPath) as? VideoTableViewCell else { return UITableViewCell() }
+        let video = videos[indexPath.row]
         cell.videoTitle.text = "Какое-то видео"
+        cell.onAddButtonTap = { (cell) in
+            video.isFavorite = !video.isFavorite
+            cell.addToFavoritesButton.setImage((video.isFavorite ? UIImage(named: "ic_heart") : UIImage(named: "ic_heart_empty")), for: .normal)
+            cell.addToFavoritesButton.imageView?.tintColor = (video.isFavorite ? UIColor.red : UIColor.white)
+            self.favorites[video.id!] = video.isFavorite
+        }
         return cell
     }
 }

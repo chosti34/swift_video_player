@@ -56,6 +56,9 @@
                                                             </constraints>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <state key="normal" title="Button" image="ic_heart_empty"/>
+                                                            <connections>
+                                                                <action selector="onAddToFavoritesButtonTap:" destination="dvt-Pg-389" eventType="touchUpInside" id="a96-HB-AWE"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -83,6 +86,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addToFavoritesButton" destination="Zqd-vs-u5E" id="TL2-L6-qAx"/>
                                             <outlet property="videoPreview" destination="W26-aQ-fJC" id="1BX-LA-Flb"/>
                                             <outlet property="videoTitle" destination="GM0-63-mbh" id="hfj-zM-cEr"/>
                                         </connections>

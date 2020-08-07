@@ -11,6 +11,8 @@ import ObjectMapper
 
 class Video: Mappable {
     var id: String?
+    
+    var isFavorite: Bool = false
 
     init(id: String) {
         self.id = id
