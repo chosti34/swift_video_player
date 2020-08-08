@@ -1,20 +1,29 @@
 PODS:
   - Alamofire (5.2.2)
+  - AlamofireImage (4.1.0):
+    - Alamofire (~> 5.1)
   - ObjectMapper (3.5.3)
+  - UICollectionViewLeftAlignedLayout (1.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - AlamofireImage (~> 4.1)
   - ObjectMapper (~> 3.5)
+  - UICollectionViewLeftAlignedLayout
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AlamofireImage
     - ObjectMapper
+    - UICollectionViewLeftAlignedLayout
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  UICollectionViewLeftAlignedLayout: 830bf6fa5bab9f9b464f62e3384f9d2e00b3c0f6
 
-PODFILE CHECKSUM: 2783d33a492e00b9b27b3b9721a56839830cfb8e
+PODFILE CHECKSUM: a5af84cb89be8c8fdd552c500818d1b49d9e8339
 
 COCOAPODS: 1.8.4

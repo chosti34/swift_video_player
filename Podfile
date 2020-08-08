@@ -8,5 +8,7 @@ target 'video_player' do
   # Pods for video_player
   pod 'Alamofire', '~> 5.2'
   pod 'ObjectMapper', '~> 3.5'
+  pod 'AlamofireImage', '~> 4.1'
+  pod 'UICollectionViewLeftAlignedLayout'
 
 end

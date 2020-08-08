@@ -10,19 +10,21 @@ import UIKit
 import ObjectMapper
 
 class Video: Mappable {
-    var id: String?
+    var title: String?
+    var url: String?
+    var preview: String?
+    var topics: [String]?
     
     var isFavorite: Bool = false
-
-    init(id: String) {
-        self.id = id
-    }
     
-    required init?(map: Map) {
-        
-    }
+    init() {}
+
+    required init?(map: Map) {}
 
     func mapping(map: Map) {
-        
+        title   <- map["meta.title"]
+        url     <- map["meta.url"]
+        preview <- map["meta.preview"]
+        topics  <- map["meta.topics"]
     }
 }
