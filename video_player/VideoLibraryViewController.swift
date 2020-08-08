@@ -13,7 +13,6 @@ import AlamofireImage
 
 class VideoLibraryViewController: UIViewController {
     var videos: [Video] = []
-    var favorites: Dictionary<String, Bool> = [:]
 
     @IBOutlet var tableView: UITableView!
 
@@ -39,9 +38,19 @@ class VideoLibraryViewController: UIViewController {
         dataProvider.onSuccess = { videos in
             print("Ответ с сервера успешно обработан")
             self.videos = videos
+            let favorites = App.instance.loadFavorites()
+            for favorite in favorites {
+                let video = self.videos.first { (video) -> Bool in
+                    return video.id == favorite.id
+                }
+                video?.isFavorite = true
+            }
             self.tableView.reloadData()
         }
-        
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         dataProvider.load()
     }
 }
@@ -56,6 +65,8 @@ extension VideoLibraryViewController: UITableViewDataSource {
         let video = videos[indexPath.row]
         
         cell.videoTitle.text = video.title ?? "Неизвестный заголовок"
+        cell.addToFavoritesButton.setImage((video.isFavorite ? UIImage(named: "ic_heart") : UIImage(named: "ic_heart_empty")), for: .normal)
+        cell.addToFavoritesButton.imageView?.tintColor = (video.isFavorite ? UIColor.red : UIColor.white)
         
         if let url = URL(string: video.preview ?? "") {
             cell.videoPreview.af.setImage(withURL: url, placeholderImage: UIImage(named: "placeholder"))
@@ -63,11 +74,11 @@ extension VideoLibraryViewController: UITableViewDataSource {
             cell.videoPreview.image = UIImage(named: "placeholder")
         }
         
-        cell.onAddButtonTap = { (cell) in
+        cell.addToFavoritesCallback = { (cell) in
             video.isFavorite = !video.isFavorite
             cell.addToFavoritesButton.setImage((video.isFavorite ? UIImage(named: "ic_heart") : UIImage(named: "ic_heart_empty")), for: .normal)
             cell.addToFavoritesButton.imageView?.tintColor = (video.isFavorite ? UIColor.red : UIColor.white)
-            self.favorites[video.title ?? ""] = video.isFavorite
+            App.instance.saveFavoriteVideos(self.videos)
         }
         
         return cell

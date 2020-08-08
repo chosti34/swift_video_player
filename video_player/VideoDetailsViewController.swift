@@ -69,7 +69,7 @@ extension VideoDetailsViewController: UICollectionViewDelegateLeftAlignedLayout 
             verticalFittingPriority: .fittingSizeLevel
         )
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 17, bottom: 8, right: 17)
     }

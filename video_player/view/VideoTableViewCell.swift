@@ -13,9 +13,9 @@ class VideoTableViewCell: UITableViewCell {
     @IBOutlet var videoTitle: UILabel!
     @IBOutlet var addToFavoritesButton: UIButton!
     
-    var onAddButtonTap: ((VideoTableViewCell) -> Void)?
+    var addToFavoritesCallback: ((VideoTableViewCell) -> Void)?
     
     @IBAction func onAddToFavoritesButtonTap(_ sender: Any) {
-        onAddButtonTap?(self)
+        addToFavoritesCallback?(self)
     }
 }

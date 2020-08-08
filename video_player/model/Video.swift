@@ -10,6 +10,7 @@ import UIKit
 import ObjectMapper
 
 class Video: Mappable {
+    var id: String?
     var title: String?
     var url: String?
     var preview: String?
@@ -22,6 +23,7 @@ class Video: Mappable {
     required init?(map: Map) {}
 
     func mapping(map: Map) {
+        id      <- map["id"]
         title   <- map["meta.title"]
         url     <- map["meta.url"]
         preview <- map["meta.preview"]
